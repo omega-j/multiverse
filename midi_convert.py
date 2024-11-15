@@ -46,9 +46,12 @@ def convert_chordz_to_midi(chordz_file, output_file):
                 if bar == 0 and beat == 0:
                     track.append(Message('program_change', program=12))  # Example instrument: Electric Piano
 
-                # Add note on and note off events for each chord in the progression
+                # Add note on events for each note in the chord (all at the same time)
                 for note in notes:
-                    track.append(Message('note_on', note=note, velocity=64, time=0))
+                    track.append(Message('note_on', note=note, velocity=64, time=0))  # time=0 to play at the same time
+
+                # Add note off events with the same duration for each note
+                for note in notes:
                     track.append(Message('note_off', note=note, velocity=64, time=480))  # Duration: 480 ticks
 
             except ValueError:
