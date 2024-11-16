@@ -1,0 +1,36 @@
+{
+  "name": "multiverse",
+  "version": "1.0.0",
+  "main": "electron.js", 
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run server\" \"npm run electron\"",
+    "server": "react-scripts start",
+    "electron": "wait-on http://localhost:3000 && electron . --enable-logging"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "concurrently": "^9.1.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "wait-on": "^8.0.1"
+  },
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  },
+  "build": {
+    "appId": "com.yourcompany.multiverse",
+    "productName": "Multiverse",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "background": "path/to/background-image.png",
+      "icon": "path/to/icon.icns"
+    }
+  }
+}
